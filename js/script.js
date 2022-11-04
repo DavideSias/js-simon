@@ -7,9 +7,52 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 
 const arrRandomNumbers = [];
 const eleNumbers = document.querySelector('.numbers');
-const btnPlay = document.querySelector('.btn-play')
-const eleResult = document.querySelector('.time-countdown')
+const showResult = document.querySelector('.user-numbers');
+const eleCountdown = document.querySelector('.time-countdown');
+const elePoints = document.querySelector('.points');
 const userNumbers = [];
+
+function getRandomInteger(min, max) {
+	return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+function checkVictory(){
+    eleCountdown.innerHTML = '';
+    eleNumbers.classList.remove('hidden'); 
+    let points = 0;
+
+    for(let i = 0; i < 5; i++){
+        let numberChoice = parseInt(prompt('Quali erano i numeri?'));
+        if (arrRandomNumbers.includes(numberChoice)) {
+            userNumbers.push(numberChoice);
+            points++;
+        }
+    } 
+    console.log(userNumbers);
+    console.log(points);
+
+    let textUser = userNumbers.toString();
+    showResult.innerHTML = `I tuoi numeri uguali sono: ${textUser}`;
+
+    //TODO - questo dovrebbe confrontare solo se sono corrispondono e sono in ordine, modificare per controllare anche solo se sono presenti
+    let victory;
+    for (let i = 0; i < 5; i++){
+        if(arrRandomNumbers.includes(userNumbers [i])){
+            victory = true;
+        } else{
+            victory = false;
+        }
+    }
+
+    if(victory){
+        eleNumbers.innerHTML = `Complimenti hai vinto! I numeri erano: ${textBot}`;
+    } else{
+        eleNumbers.innerHTML = `Mi dispiace hai perso! I numeri erano: ${textBot}`;
+    }
+
+    elePoints.innerHTML = 'Il tuo punteggio è di: ' + points;
+}
+
 
 for (let i = 0; i < 5; i++){
     let randomNumber;
@@ -20,44 +63,12 @@ for (let i = 0; i < 5; i++){
 }
 console.log(arrRandomNumbers);
 
-let text = arrRandomNumbers.toString();
-eleNumbers.innerHTML = (text);
-
+let textBot = arrRandomNumbers.toString();
+eleNumbers.innerHTML = (textBot);
 
 setTimeout(() => {
     eleNumbers.classList.add('hidden'); 
-    eleResult.innerHTML = 'Inserisci i numeri dove indicato';
+    eleCountdown.innerHTML = 'Inserisci i numeri dove indicato';
     }, 9000)
 
 setTimeout(checkVictory, 10000);
-
-
-function checkVictory(){
-
-    for(let i = 0; i < 5; i++){
-        let numberChoice = parseInt(prompt('Quali erano i numeri?'));
-        userNumbers.push(numberChoice);
-    } 
-    console.log(userNumbers);
-
-
-    //TODO - questo dovrebbe confrontare solo se sono corrispondono e sono in ordine, modificare per controllare anche solo se sono presenti
-    let victory;
-    for (let i = 0; i < 5; i++){
-        if(arrRandomNumbers[i] == userNumbers [i]){
-            victory = true;
-        } else{
-            victory = false;
-        }
-    }
-
-    if(victory){
-        eleResult.innerHTML = ('Complimenti hai vinto!')
-    } else{
-        eleResult.innerHTML = ('Mi dispiace, hai perso')
-    }
-}
-
-function getRandomInteger(min, max) {
-	return Math.floor(Math.random() * (max - min + 1) ) + min;
-}
