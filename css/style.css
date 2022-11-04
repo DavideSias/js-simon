@@ -3,3 +3,28 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+html{
+    font-size: 2rem;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.container{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-countdown{
+    margin-bottom: 2rem;
+}
+
+.hidden{
+    display: none;
+}
