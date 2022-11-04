@@ -34,7 +34,6 @@ function checkVictory(){
     let textUser = userNumbers.toString();
     showResult.innerHTML = `I tuoi numeri uguali sono: ${textUser}`;
 
-    //TODO - questo dovrebbe confrontare solo se sono corrispondono e sono in ordine, modificare per controllare anche solo se sono presenti
     let victory;
     for (let i = 0; i < 5; i++){
         if(arrRandomNumbers.includes(userNumbers [i])){
