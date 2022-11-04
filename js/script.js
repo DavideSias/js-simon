@@ -53,7 +53,6 @@ function checkVictory(){
     elePoints.innerHTML = 'Il tuo punteggio è di: ' + points;
 }
 
-
 for (let i = 0; i < 5; i++){
     let randomNumber;
     do {
@@ -66,9 +65,23 @@ console.log(arrRandomNumbers);
 let textBot = arrRandomNumbers.toString();
 eleNumbers.innerHTML = (textBot);
 
+let counter = 29;
+
+const eleInterval = setInterval(count, 1000);
+function count() {
+	if (counter === 0) {
+		clearInterval(eleInterval);
+	} else {
+		eleCountdown.innerHTML = 'Ricordati questi numeri ti rimangono ' + counter + ' secondi';
+		counter--;
+	}
+}
+
 setTimeout(() => {
     eleNumbers.classList.add('hidden'); 
     eleCountdown.innerHTML = 'Inserisci i numeri dove indicato';
-    }, 9000)
+    }, 30000)
 
-setTimeout(checkVictory, 10000);
+setTimeout(checkVictory, 31000);
+
+
