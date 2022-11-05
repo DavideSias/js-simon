@@ -10,6 +10,7 @@ const eleNumbers = document.querySelector('.numbers');
 const showResult = document.querySelector('.user-numbers');
 const eleCountdown = document.querySelector('.time-countdown');
 const elePoints = document.querySelector('.points');
+const eleBtnReplay = document.querySelector('.btn-replay');
 const userNumbers = [];
 
 function getRandomInteger(min, max) {
@@ -32,7 +33,7 @@ function checkVictory(){
     console.log(points);
 
     let textUser = userNumbers.toString();
-    showResult.innerHTML = `I tuoi numeri uguali sono: ${textUser}`;
+    showResult.innerHTML = `I tuoi numeri uguali: ${textUser}`;
 
     let victory;
     for (let i = 0; i < 5; i++){
@@ -51,6 +52,10 @@ function checkVictory(){
 
     elePoints.innerHTML = 'Il tuo punteggio è di: ' + points;
 }
+
+eleBtnReplay.addEventListener('click', function(){
+    window.location.reload();
+})
 
 for (let i = 0; i < 5; i++){
     let randomNumber;
